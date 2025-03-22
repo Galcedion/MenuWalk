@@ -18,8 +18,86 @@
 					name="g_class"
 					type="text"
 					label="CSS classname of entry point"
-					default="g-menu"
-					description="CSS Class name for the div element, to apply styles."/>
+					default="g-mod-mw"
+					required="1"
+					description="Entry CSS class name for the displayed module."/>
+				<field
+					name="s_main_buttons"
+					type="spacer"
+					label=""
+					hr="true"/>
+				<field
+					name="s_main_buttons_text"
+					type="spacer"
+					class="fw-bold"
+					label="Navigation button settings"
+					description="Select which buttons should appear. Please be aware that buttons will not be displayed when they would lead to a non-existing page or to the current page. At least one button must be selected."/>
+				<field
+					name="enable_buttons"
+					type="checkboxes"
+					label="Active buttons">
+					<option value="first" checked="1">First Menu Entry</option>
+					<option value="prev" checked="1">Previous Menu Entry</option>
+					<option value="top" checked="1">Parent Menu Entry</option>
+					<option value="next" checked="1">Next Menu Entry</option>
+					<option value="End" checked="1">Last Menu Entry</option>
+				</field>
+				<field
+					name="enable_menu_count"
+					type="radio"
+					default="1"
+					label="Menu number on button"
+					description="Show the number of the menu entry on the button."
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field
+					name="enable_menu_title"
+					type="radio"
+					default="1"
+					label="Menu title on button"
+					description="Show the title of the menu entry on the button."
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field
+					name="s_buttons_style"
+					type="spacer"
+					label=""
+					hr="true"/>
+				<field
+					name="s_buttons_style_text"
+					type="spacer"
+					class="fw-bold"
+					label="Display and Style settings"
+					description=""/>
+				<field
+					name="enable_fontawesome"
+					type="radio"
+					default="1"
+					label="Fontawesome Icons"
+					description="Use Fontawesome Icons to display button functionality."
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field
+					name="enable_bootstrap"
+					type="radio"
+					default="1"
+					label="Bootstrap CSS"
+					description="Use Bootstrap for styling of the module content. Disabling Bootstrap will remove the default styling."
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field
+					name="custom_css"
+					type="textarea"
+					label="Custom CSS"
+					rows="10"/>
 			</fieldset>
 		</fields>
 	</config>
