@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>mod_menuwalk</name>
+	<version>1.0.0</version>
+	<author>Galcedion</author>
+	<creationDate>2025</creationDate>
+	<license>GPL-3.0</license>
+	<description>Module to navigate the current (sub)menu from within the page content.</description>
+	<files>
+		<filename module="mod_menuwalk">mod_menuwalk.php</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="g_class"
+					type="text"
+					label="CSS classname of entry point"
+					default="g-menu"
+					description="CSS Class name for the div element, to apply styles."/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
