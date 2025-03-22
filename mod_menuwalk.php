@@ -12,5 +12,6 @@ require_once dirname(__FILE__) . '/helper.php';
 $menu_elements = ModMenuWalk::get_menu_elements();
 
 $main_class = $params->get('g_class');
+$enabled_buttons = $params->get('enable_buttons');
 
 require JModuleHelper::getLayoutPath('mod_menuwalk');

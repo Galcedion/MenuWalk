@@ -16,41 +16,43 @@ class ModMenuWalk
 		$tmp_parent = $menu->getItem($current->parent_id);
 		$parent_level = $tmp_parent->level;
 		$menu_elements['parent'] = ['title' => $tmp_parent->title, 'url' => JRoute::_($tmp_parent->link)];
-		
+
 		$menu_full = $menu->getItems(array(), array());
-		
-		$submenu = False;
-		
-		$aft_mode = False;
+
+		$passed_current = False; // indicate passed current entry
 		$reached_parent = False;
-		
-		$prev = Null;
-		$next = Null;
-		
+		$entries = ['first' => Null, 'prev' => Null, 'next' => Null, 'last' => Null];
+
 		for($i = 0; $i < count($menu_full); ++$i) {
-			if($menu_full[$i]->id == $tmp_parent->id) {
-				$submenu = $tmp_parent->level;
+			if($menu_full[$i]->id == $tmp_parent->id) { // reached the parent, the following entries are the menu to traverse
 				$reached_parent = True;
-				continue;
-			} elseif($menu_full[$i]->level === $submenu) {
+			} elseif($reached_parent && $menu_full[$i]->level === $tmp_parent->level) { // exiting the child / neighbour scope
 				break;
-			}
-			if($reached_parent && $menu_full[$i]->level == $submenu + 1) {
-				if($current->id == $menu_full[$i]->id)
-					$aft_mode = True;
-				elseif(!$aft_mode)
-					$prev = $menu_full[$i];
-				else {
-					$next = $menu_full[$i];
-					break;
+			} elseif($reached_parent && $menu_full[$i]->level == $tmp_parent->level + 1) { // only process direct children of parent
+				if($current->id == $menu_full[$i]->id) {
+					$passed_current = True;
+					if($entries['first'] === Null)
+						$entries['first'] = False;
+				} elseif(!$passed_current) {
+					$entries['prev'] = $menu_full[$i];
+					if($entries['first'] === Null)
+						$entries['first'] = $menu_full[$i];
+				} elseif($passed_current) {
+					$entries['last'] = $menu_full[$i];
+					if($entries['next'] === Null)
+						$entries['next'] = $menu_full[$i];
 				}
 			}
 		}
-		if($prev != NUll)
-			$menu_elements['prev'] = ['title' => $prev->title, 'url' => JRoute::_($prev->link)];
-		if($next != Null)
-			$menu_elements['next'] = ['title' => $next->title, 'url' => JRoute::_($next->link)];
-		
+		if($entries['first'] != NUll)
+			$menu_elements['first'] = ['title' => $entries['first']->title, 'url' => JRoute::_($entries['first']->link)];
+		if($entries['prev'] != NUll)
+			$menu_elements['prev'] = ['title' => $entries['prev']->title, 'url' => JRoute::_($entries['prev']->link)];
+		if($entries['next'] != Null)
+			$menu_elements['next'] = ['title' => $entries['next']->title, 'url' => JRoute::_($entries['next']->link)];
+		if($entries['last'] != Null)
+			$menu_elements['last'] = ['title' => $entries['last']->title, 'url' => JRoute::_($entries['last']->link)];
+
 		return $menu_elements;
 	}
 }
