@@ -40,7 +40,7 @@
 					<option value="prev" checked="1">Previous Menu Entry</option>
 					<option value="top" checked="1">Parent Menu Entry</option>
 					<option value="next" checked="1">Next Menu Entry</option>
-					<option value="End" checked="1">Last Menu Entry</option>
+					<option value="last" checked="1">Last Menu Entry</option>
 				</field>
 				<field
 					name="enable_menu_count"
