@@ -16,6 +16,7 @@ $g_mw_config['show_menu_count'] = ($params->get('enable_menu_count') == 1 ? true
 $g_mw_config['show_menu_title'] = ($params->get('enable_menu_title') == 1 ? true : false);
 $g_mw_config['show_fontawesome'] = ($params->get('enable_fontawesome') == 1 ? true : false);
 $g_mw_config['show_bootstrap'] = ($params->get('enable_bootstrap') == 1 ? true : false);
+$g_mw_config['show_bootstrap_pos'] = ($params->get('enable_bootstrap_position_only') == 1 ? true : false);
 $g_mw_config['custom_css'] = $params->get('custom_css') === null ? '' : trim($params->get('custom_css'));
 
 $menu_elements = ModMenuWalk::get_menu_elements($g_mw_config);
