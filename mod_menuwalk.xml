@@ -97,7 +97,8 @@
 					name="custom_css"
 					type="textarea"
 					label="Custom CSS"
-					rows="10"/>
+					rows="10"
+					description="Additional CSS for module pages. Entry point is a div with the above class name. Within is a div for each button with an a element (given the button is available)."/>
 			</fieldset>
 		</fields>
 	</config>

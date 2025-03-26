@@ -6,6 +6,12 @@
  * @license    GNU/GPL: https://gnu.org/licenses/gpl.html
  */
 defined('_JEXEC') or die;
+use Joomla\CMS\Factory;
+if(strlen($g_mw_config['custom_css']) > 0) {
+	$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+	$wa->addInlineStyle($g_mw_config['custom_css']);
+}
+
 $button_classlist = $g_mw_config['show_bootstrap'] ? 'class="btn btn-outline-info"' : '';
 $fa_first = $g_mw_config['show_fontawesome'] ? '<i class="fa-solid fa-backward-step"></i>' : '';
 $fa_prev = $g_mw_config['show_fontawesome'] ? '<i class="fa-solid fa-backward"></i>' : '';
