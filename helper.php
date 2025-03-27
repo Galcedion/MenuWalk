@@ -59,7 +59,8 @@ class ModMenuWalk
 	}
 
 	private static function build_menu_element($menu_item, $g_mw_config, $count = Null) {
-		$title = ($g_mw_config['show_menu_count'] ? strval($count) : '') . ' ' . ($g_mw_config['show_menu_title'] ? $menu_item->title : '');
+		$separator = $count !== Null && $g_mw_config['show_menu_count'] && $g_mw_config['show_menu_title'] ? ' - ' : '';
+		$title = ($g_mw_config['show_menu_count'] ? strval($count) : '') . $separator . ($g_mw_config['show_menu_title'] ? $menu_item->title : '');
 		return ['title' => $title, 'url' => JRoute::_($menu_item->link)];
 	}
 }
