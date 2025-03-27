@@ -19,47 +19,47 @@ class ModMenuWalk
 
 		$menu_full = $menu->getItems(array(), array());
 
-		$passed_current = False; // indicate passed current entry
-		$reached_parent = False;
-		$entries = ['first' => Null, 'prev' => Null, 'next' => Null, 'last' => Null];
+		$passed_current = false; // indicate passed current entry
+		$reached_parent = false;
+		$entries = ['first' => null, 'prev' => null, 'next' => null, 'last' => null];
 		$count = 0;
 
 		for($i = 0; $i < count($menu_full); ++$i) {
 			if($menu_full[$i]->id == $tmp_parent->id) { // reached the parent, the following entries are the menu to traverse
-				$reached_parent = True;
+				$reached_parent = true;
 			} elseif($reached_parent && $menu_full[$i]->level === $tmp_parent->level) { // exiting the child / neighbour scope
 				break;
 			} elseif($reached_parent && $menu_full[$i]->level == $tmp_parent->level + 1) { // only process direct children of parent
 				++$count;
 				if($current->id == $menu_full[$i]->id) {
-					$passed_current = True;
-					if($entries['first'] === Null)
-						$entries['first'] = False;
+					$passed_current = true;
+					if($entries['first'] === null)
+						$entries['first'] = false;
 				} elseif(!$passed_current) {
 					$entries['prev'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
-					if($entries['first'] === Null)
+					if($entries['first'] === null)
 						$entries['first'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
 				} elseif($passed_current) {
 					$entries['last'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
-					if($entries['next'] === Null)
+					if($entries['next'] === null)
 						$entries['next'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
 				}
 			}
 		}
-		if($entries['first'] != NUll)
+		if($entries['first'] != null)
 			$menu_elements['first'] = $entries['first'];
-		if($entries['prev'] != NUll)
+		if($entries['prev'] != null)
 			$menu_elements['prev'] = $entries['prev'];
-		if($entries['next'] != Null)
+		if($entries['next'] != null)
 			$menu_elements['next'] = $entries['next'];
-		if($entries['last'] != Null)
+		if($entries['last'] != null)
 			$menu_elements['last'] = $entries['last'];
 
 		return $menu_elements;
 	}
 
-	private static function build_menu_element($menu_item, $g_mw_config, $count = Null) {
-		$separator = $count !== Null && $g_mw_config['show_menu_count'] && $g_mw_config['show_menu_title'] ? ' - ' : '';
+	private static function build_menu_element($menu_item, $g_mw_config, $count = null) {
+		$separator = $count !== null && $g_mw_config['show_menu_count'] && $g_mw_config['show_menu_title'] ? ' - ' : '';
 		$title = ($g_mw_config['show_menu_count'] ? strval($count) : '') . $separator . ($g_mw_config['show_menu_title'] ? $menu_item->title : '');
 		return ['title' => $title, 'url' => JRoute::_($menu_item->link)];
 	}
