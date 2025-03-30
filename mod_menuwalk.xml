@@ -5,22 +5,29 @@
 	<author>Galcedion</author>
 	<creationDate>2025</creationDate>
 	<license>GPL-3.0</license>
-	<description>Module to navigate the current (sub)menu from within the page content.</description>
+	<description>MOD_MW_DESC</description>
 	<files>
 		<filename module="mod_menuwalk">mod_menuwalk.php</filename>
 		<filename>helper.php</filename>
 		<folder>tmpl</folder>
+		<folder>language</folder>
 	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.mod_menuwalk.ini</language>
+		<language tag="en-GB">en-GB/en-GB.mod_menuwalk.sys.ini</language>
+		<language tag="de-DE">de-DE/de-DE.mod_menuwalk.ini</language>
+		<language tag="de-DE">de-DE/de-DE.mod_menuwalk.sys.ini</language>
+	</languages>
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
 				<field
 					name="g_class"
 					type="text"
-					label="CSS classname of entry point"
+					label="MOD_MW_G_CLASS_LABEL"
 					default="g-mod-mw"
 					required="1"
-					description="Entry CSS class name for the displayed module."/>
+					description="MOD_MW_G_CLASS_DESC"/>
 				<field
 					name="s_main_buttons"
 					type="spacer"
@@ -30,24 +37,24 @@
 					name="s_main_buttons_text"
 					type="spacer"
 					class="fw-bold"
-					label="Navigation button settings"
-					description="Select which buttons should appear. Please be aware that buttons will not be displayed when they would lead to a non-existing page or to the current page. At least one button must be selected."/>
+					label="MOD_MW_S_MAIN_BUTTONS_TEXT_LABEL"
+					description="MOD_MW_S_MAIN_BUTTONS_TEXT_DESC"/>
 				<field
 					name="enable_buttons"
 					type="checkboxes"
-					label="Active buttons">
-					<option value="first" checked="1">First Menu Entry</option>
-					<option value="prev" checked="1">Previous Menu Entry</option>
-					<option value="top" checked="1">Parent Menu Entry</option>
-					<option value="next" checked="1">Next Menu Entry</option>
-					<option value="last" checked="1">Last Menu Entry</option>
+					label="MOD_MW_ENABLE_BUTTONS_LABEL">
+					<option value="first" checked="1">MOD_MW_ENABLE_BUTTONS_FIRST</option>
+					<option value="prev" checked="1">MOD_MW_ENABLE_BUTTONS_PREV</option>
+					<option value="top" checked="1">MOD_MW_ENABLE_BUTTONS_PARENT</option>
+					<option value="next" checked="1">MOD_MW_ENABLE_BUTTONS_NEXT</option>
+					<option value="last" checked="1">MOD_MW_ENABLE_BUTTONS_LAST</option>
 				</field>
 				<field
 					name="enable_menu_count"
 					type="radio"
 					default="1"
-					label="Menu number on button"
-					description="Show the number of the menu entry on the button."
+					label="MOD_MW_ENABLE_MENU_COUNT_LABEL"
+					description="MOD_MW_ENABLE_MENU_COUNT_DESC"
 					layout="joomla.form.field.radio.switcher">
 					<option value="0">JNo</option>
 					<option value="1">JYes</option>
@@ -56,8 +63,8 @@
 					name="enable_menu_title"
 					type="radio"
 					default="1"
-					label="Menu title on button"
-					description="Show the title of the menu entry on the button."
+					label="MOD_MW_ENABLE_MENU_TITLE_LABEL"
+					description="MOD_MW_ENABLE_MENU_TITLE_DESC"
 					layout="joomla.form.field.radio.switcher">
 					<option value="0">JNo</option>
 					<option value="1">JYes</option>
@@ -71,14 +78,14 @@
 					name="s_buttons_style_text"
 					type="spacer"
 					class="fw-bold"
-					label="Display and Style settings"
+					label="MOD_MW_S_BUTTONS_STYLE_TEXT"
 					description=""/>
 				<field
 					name="enable_fontawesome"
 					type="radio"
 					default="1"
-					label="Fontawesome Icons"
-					description="Use Fontawesome Icons to display button functionality."
+					label="MOD_MW_ENABLE_FONTAWESOME_LABEL"
+					description="MOD_MW_ENABLE_FONTAWESOME_DESC"
 					layout="joomla.form.field.radio.switcher">
 					<option value="0">JNo</option>
 					<option value="1">JYes</option>
@@ -87,8 +94,8 @@
 					name="enable_bootstrap"
 					type="radio"
 					default="1"
-					label="Bootstrap CSS"
-					description="Use Bootstrap for styling of the module content. Disabling Bootstrap will remove the default styling."
+					label="MOD_MW_ENABLE_BOOTSTRAP_LABEL"
+					description="MOD_MW_ENABLE_BOOTSTRAP_DESC"
 					layout="joomla.form.field.radio.switcher">
 					<option value="0">JNo</option>
 					<option value="1">JYes</option>
@@ -97,8 +104,8 @@
 					name="enable_bootstrap_position_only"
 					type="radio"
 					default="0"
-					label="Bootstrap CSS - Only set Position (no button-effects)"
-					description="Only set positioning CSS."
+					label="MOD_MW_ENABLE_BOOTSTRAP_POSITION_ONLY_LABEL"
+					description="MOD_MW_ENABLE_BOOTSTRAP_POSITION_ONLY_DESC"
 					layout="joomla.form.field.radio.switcher">
 					<option value="0">JNo</option>
 					<option value="1">JYes</option>
@@ -106,9 +113,9 @@
 				<field
 					name="custom_css"
 					type="textarea"
-					label="Custom CSS"
+					label="MOD_MW_CUSTOM_CSS_LABEL"
 					rows="10"
-					description="Additional CSS for module pages. Entry point is a div with the above class name. Within is a div for each button with an a element (given the button is available)."/>
+					description="MOD_MW_CUSTOM_CSS_DESC"/>
 			</fieldset>
 		</fields>
 	</config>
