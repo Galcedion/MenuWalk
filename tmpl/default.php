@@ -1,17 +1,20 @@
 <?php
 /**
- * @version    1.0.0
+ * @package    Joomla.Site
+ * @subpackage mod_menuwalk
+ *
  * @author     Galcedion https://galcedion.com
  * @copyright  Copyright (c) 2025 Galcedion
  * @license    GNU/GPL: https://gnu.org/licenses/gpl.html
  */
 defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
-if(strlen($g_mw_config['custom_css']) > 0) {
+if(strlen($g_mw_config['custom_css']) > 0) { // load custom CSS if set
 	$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 	$wa->addInlineStyle($g_mw_config['custom_css']);
 }
 
+/* pre-build HTML from config */
 $div_classlist = $g_mw_config['show_bootstrap'] ? 'class="col text-center"' : '';
 $button_classlist = $g_mw_config['show_bootstrap'] && !$g_mw_config['show_bootstrap_pos'] ? 'class="btn btn-outline-info"' : '';
 $fa_first = $g_mw_config['show_fontawesome'] ? '<i class="fa-solid fa-backward-step"></i>' : '';
