@@ -22,18 +22,16 @@ class ModMenuWalk
 	 * @return associative array containing the requested menu elements
 	 */
 	public static function get_menu_elements($g_mw_config) {
-		$menu_elements = [];
+		$menu_elements = ['parent' => null, 'first' => null, 'prev' => null, 'next' => null, 'last' => null];
 		$menu = JFactory::getApplication()->getMenu();
 		$current = $menu->getActive(); // the current page's menu entry
 		$tmp_parent = $menu->getItem($current->parent_id);
-		$parent_level = $tmp_parent->level; // TODO: currently not needed
 		$menu_elements['parent'] = ModMenuWalk::build_menu_element($tmp_parent, $g_mw_config);
 
 		$menu_full = $menu->getItems(array(), array());
 
 		$passed_current = false; // indicate passed current entry
 		$reached_parent = false; // indicate when the parent entry is reached
-		$entries = ['first' => null, 'prev' => null, 'next' => null, 'last' => null];
 		$count = 0; // counter of menu item position
 
 		for($i = 0; $i < count($menu_full); ++$i) { // iterate entire menu
@@ -45,28 +43,23 @@ class ModMenuWalk
 				++$count;
 				if($current->id == $menu_full[$i]->id) {
 					$passed_current = true;
-					if($entries['first'] === null)
-						$entries['first'] = false;
+					if($menu_elements['first'] === null)
+						$menu_elements['first'] = false;
 				} elseif(!$passed_current) {
-					$entries['prev'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
-					if($entries['first'] === null)
-						$entries['first'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
+					$menu_elements['prev'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
+					if($menu_elements['first'] === null)
+						$menu_elements['first'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
 				} elseif($passed_current) {
-					$entries['last'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
-					if($entries['next'] === null)
-						$entries['next'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
+					$menu_elements['last'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
+					if($menu_elements['next'] === null)
+						$menu_elements['next'] = ModMenuWalk::build_menu_element($menu_full[$i], $g_mw_config, $count);
 				}
 			}
 		}
-		// TODO: refactor?
-		if($entries['first'] != null)
-			$menu_elements['first'] = $entries['first'];
-		if($entries['prev'] != null)
-			$menu_elements['prev'] = $entries['prev'];
-		if($entries['next'] != null)
-			$menu_elements['next'] = $entries['next'];
-		if($entries['last'] != null)
-			$menu_elements['last'] = $entries['last'];
+		foreach($menu_elements as $k => $v) { // remove empty or unneeded elements
+			if($v === null || $v === false)
+				unset($menu_elements[$k]);
+		}
 
 		return $menu_elements;
 	}
