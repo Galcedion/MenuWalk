@@ -18,9 +18,9 @@ if(strlen($g_mw_config['custom_css']) > 0) { // load custom CSS if set
 $div_classlist = $g_mw_config['show_bootstrap'] ? 'class="col text-center"' : '';
 $button_classlist = $g_mw_config['show_bootstrap'] && !$g_mw_config['show_bootstrap_pos'] ? 'class="btn btn-outline-info"' : '';
 $fa_first = $g_mw_config['show_fontawesome'] ? '<i class="fa-solid fa-backward-step"></i>' : '';
-$fa_prev = $g_mw_config['show_fontawesome'] ? '<i class="fa-solid fa-backward"></i>' : '';
-$fa_parent = $g_mw_config['show_fontawesome'] ? '<i class="fa-solid fa-eject"></i>' : '';
-$fa_next = $g_mw_config['show_fontawesome'] ? '<i class="fa-solid fa-forward"></i>' : '';
+$fa_prev = $g_mw_config['show_fontawesome'] ? '<i class="fa-solid fa-chevron-left"></i>' : '';
+$fa_parent = $g_mw_config['show_fontawesome'] ? '<i class="fa-solid fa-chevron-up"></i>' : '';
+$fa_next = $g_mw_config['show_fontawesome'] ? '<i class="fa-solid fa-chevron-right"></i>' : '';
 $fa_last = $g_mw_config['show_fontawesome'] ? '<i class="fa-solid fa-forward-step"></i>' : '';
 ?>
 <div class="<?=$main_class;?> <?=!$g_mw_config['show_bootstrap']?:'row';?>">
