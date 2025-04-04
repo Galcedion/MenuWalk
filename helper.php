@@ -8,6 +8,8 @@
  * @license    GNU/GPL: https://gnu.org/licenses/gpl.html
  */
 defined('_JEXEC') or die;
+use \Joomla\CMS\Factory;
+use \Joomla\CMS\Router\Route;
 
 /**
  * Helper class for the Module MenuWalk.
@@ -23,7 +25,7 @@ class ModMenuWalk
 	 */
 	public static function get_menu_elements($g_mw_config) {
 		$menu_elements = ['parent' => null, 'first' => null, 'prev' => null, 'next' => null, 'last' => null];
-		$menu = JFactory::getApplication()->getMenu();
+		$menu = Factory::getApplication()->getMenu();
 		$current = $menu->getActive(); // the current page's menu entry
 		$tmp_parent = $menu->getItem($current->parent_id);
 		$menu_elements['parent'] = ModMenuWalk::build_menu_element($tmp_parent, $g_mw_config);
@@ -76,6 +78,6 @@ class ModMenuWalk
 	private static function build_menu_element($menu_item, $g_mw_config, $count = null) {
 		$separator = $count !== null && $g_mw_config['show_menu_count'] && $g_mw_config['show_menu_title'] ? ' - ' : '';
 		$title = ($g_mw_config['show_menu_count'] ? strval($count) : '') . $separator . ($g_mw_config['show_menu_title'] ? $menu_item->title : '');
-		return ['title' => $title, 'url' => JRoute::_($menu_item->link)];
+		return ['title' => $title, 'url' => Route::_($menu_item->link)];
 	}
 }

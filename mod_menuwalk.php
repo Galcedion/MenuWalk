@@ -8,7 +8,7 @@
  * @license    GNU/GPL: https://gnu.org/licenses/gpl.html
  */
 defined('_JEXEC') or die;
-
+use \Joomla\CMS\Helper\ModuleHelper;
 require_once dirname(__FILE__) . '/helper.php';
 
 /* retrieve all config parameters */
@@ -26,4 +26,4 @@ $g_mw_config['custom_css'] = $params->get('custom_css') === null ? '' : trim($pa
 $menu_elements = ModMenuWalk::get_menu_elements($g_mw_config);
 
 // this loads the display
-require JModuleHelper::getLayoutPath('mod_menuwalk');
+require ModuleHelper::getLayoutPath('mod_menuwalk');

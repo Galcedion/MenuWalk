@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.1" client="site" method="upgrade">
-	<name>mod_menuwalk</name>
+	<name>MenuWalk</name>
 	<version>1.0.0</version>
 	<author>Galcedion</author>
+	<authorUrl>https://galcedion.com</authorUrl>
 	<creationDate>2025</creationDate>
 	<license>GPL-3.0</license>
 	<description>MOD_MW_DESC</description>
