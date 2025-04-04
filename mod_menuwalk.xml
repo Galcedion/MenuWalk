@@ -19,6 +19,9 @@
 		<language tag="de-DE">de-DE/de-DE.mod_menuwalk.ini</language>
 		<language tag="de-DE">de-DE/de-DE.mod_menuwalk.sys.ini</language>
 	</languages>
+	<updateservers>
+		<server type="extension" name="mod_menuwalk">https://raw.githubusercontent.com/Galcedion/MenuWalk/master/mw_update.xml</server>
+	</updateservers>
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
