@@ -115,6 +115,17 @@
 					<option value="1">JYes</option>
 				</field>
 				<field
+					name="vertical_align"
+					type="list"
+					default="none"
+					label="MOD_MW_VALIGN_LABEL"
+					description="MOD_MW_VALIGN_DESC">
+					<option value="none">MOD_MW_VALIGN_OPTION_NONE</option>
+					<option value="top">MOD_MW_VALIGN_OPTION_TOP</option>
+					<option value="center">MOD_MW_VALIGN_OPTION_CENTER</option>
+					<option value="bottom">MOD_MW_VALIGN_OPTION_BOTTOM</option>
+				</field>
+				<field
 					name="custom_css"
 					type="textarea"
 					label="MOD_MW_CUSTOM_CSS_LABEL"
