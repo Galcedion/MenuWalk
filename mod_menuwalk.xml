@@ -132,6 +132,8 @@
 					rows="10"
 					description="MOD_MW_CUSTOM_CSS_DESC"/>
 			</fieldset>
+			<fieldset name="fs_cssmap" label="MOD_MW_CSSMAP_LABEL" description="MOD_MW_CSSMAP_DESC">
+			</fieldset>
 		</fields>
 	</config>
 </extension>
